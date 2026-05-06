@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 sed -i "s/DB_HOST=.*/DB_HOST=${DB_HOST:-db}/g" .env
@@ -7,7 +7,7 @@ sed -i "s/DB_USERNAME=.*/DB_USERNAME=${DB_USERNAME:-root}/g" .env
 sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=${DB_PASSWORD:-password}/g" .env
 
 echo "Waiting for MySQL..."
-while ! cat /dev/null > /dev/tcp/${DB_HOST:-db}/3306 2>/dev/null; do
+while ! bash -c "cat /dev/null > /dev/tcp/${DB_HOST:-db}/3306" 2>/dev/null; do
     sleep 2
     echo "Still waiting..."
 done
