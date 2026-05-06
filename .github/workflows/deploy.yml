@@ -15,8 +15,9 @@ jobs:
     steps:
       - name: Free disk space
         run: |
-          docker system prune -f
-          docker builder prune -f
+          docker system prune -af --volumes
+          sudo journalctl --vacuum-size=20M
+          df -h
 
       - name: Checkout code
         uses: actions/checkout@v4
