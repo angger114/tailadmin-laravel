@@ -1,6 +1,6 @@
 services:
   web:
-    image: ${DOCKER_USER}/tailadmin-laravel:beta
+    image: ${DOCKER_USER}/${DOCKER_USER}-tailadmin-laravel:beta
     ports:
       - "8090:8090"
     environment:

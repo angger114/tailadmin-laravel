@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: "${{ secrets.DOCKER_USER }}-tailadmin-laravel:beta"
+  IMAGE_NAME: "${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_USER }}-tailadmin-laravel:beta"
 
 jobs:
   build-push-image:
