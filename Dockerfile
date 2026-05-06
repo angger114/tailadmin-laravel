@@ -1,3 +1,5 @@
+FROM composer:latest AS composer
+
 FROM ubuntu:22.04
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse" > /etc/apt/sources.list && \
@@ -23,7 +25,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     rm -rf /var/lib/apt/lists/*
 
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-COPY --from=composer:latest /usr/local/bin/composer /usr/local/bin/composer
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 
 WORKDIR /var/www/tailadmin
