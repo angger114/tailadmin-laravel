@@ -22,7 +22,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs && \
     rm -rf /var/lib/apt/lists/*
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:latest /usr/local/bin/composer /usr/local/bin/composer
+
 
 WORKDIR /var/www/tailadmin
 
